@@ -1,26 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {useDispatch, useSelector} from "react-redux";
+import {addBooksPage, AppDispatch, findBooks} from "./redux/booksReducer";
+import {booksListSelector} from "./redux/selectors";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const dispatch:AppDispatch = useDispatch()
+    const books = useSelector(booksListSelector)
+
+  return (<div>
+        <button onClick={() => {
+            dispatch(findBooks('Поющие в терновнике'))
+        }}>жмяк</button>
+          <button onClick={() => {
+            dispatch(addBooksPage())
+        }}>клякс</button>
+          {books.map(b => <div>
+              <div>{b.id} </div>
+              <div><img src={b.volumeInfo.imageLinks?.thumbnail? b.volumeInfo.imageLinks.thumbnail : ''} alt=""/></div>
+          </div>)}
+      </div>
+  )
 }
 
 export default App;
