@@ -7,12 +7,15 @@ const SET_TOTAL_RESULTS = 'books/SET_TOTAL_RESULTS'
 const SET_TOTAL_PAGES = 'books/SET_TOTAL_PAGES'
 const SET_SEARCH_TERM = 'books/SET_SEARCH_TERM'
 const SET_CURRENT_PAGE = 'books/SET_CURRENT_PAGE'
+const CLEAR_BOOKS_LIST = 'books/CLEAR_BOOKS_LIST'
+const TOGGLE_IS_FETCHING = 'books/TOGGLE_IS_FETCHING'
 let initialState = {
     booksList: [] as BookType[],
     totalResults: null as number | null,
     totalPages: null as number | null,
     currentPage: 0,
     searchTerm: '',
+    isFetching: false,
 }
 
 
@@ -48,6 +51,18 @@ const booksReducer = (state = initialState, action: Actions): initialStateType =
                 currentPage: action.payload.currentPage
             }
         }
+        case CLEAR_BOOKS_LIST: {
+            return {
+                ...state,
+                booksList: []
+            }
+        }
+        case TOGGLE_IS_FETCHING:{
+            return {
+                ...state,
+                isFetching: action.payload.isFetching
+            }
+        }
         default:
             return state
     }
@@ -59,18 +74,24 @@ const actions = {
     setTotalPages: (totalPages: number) => ({type: SET_TOTAL_PAGES, payload: {totalPages}} as const),
     setSearchTerm: (searchTerm: string) => ({type: SET_SEARCH_TERM, payload: {searchTerm}} as const),
     setCurrentPage: (currentPage: number) => ({type: SET_CURRENT_PAGE, payload: {currentPage}} as const),
+    clearBooksList: () => ({type: CLEAR_BOOKS_LIST} as const),
+    toggleIsFetching: (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const)
 }
 
 const _getBooks = (): Thunk => async (dispatch, getState) => {
+
     const data = await booksAPI.getBooks(getState().books.searchTerm, getState().showing.category, getState().books.currentPage, getState().showing.sorting)
     dispatch(actions.booksReceived(data.items))
     dispatch(actions.setTotalResults(data.totalItems))
     dispatch(actions.setTotalPages(Math.ceil(data.totalItems / 30)))
 }
 export const findBooks = (searchTerm: string): Thunk => async (dispatch, getState) => {
+    dispatch(actions.toggleIsFetching(true))
     dispatch(actions.setSearchTerm(searchTerm))
     dispatch(actions.setCurrentPage(0))
+    dispatch(actions.clearBooksList())
     await dispatch(_getBooks())
+    dispatch(actions.toggleIsFetching(false))
 }
 export const addBooksPage = (): Thunk => async (dispatch, getState) => {
     dispatch(actions.setCurrentPage(getState().books.currentPage + 1))

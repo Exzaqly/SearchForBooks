@@ -1,5 +1,5 @@
-import {BaseThunk, InferActionsType} from "./store";
-import {booksAPI} from "../api/API";
+import {AppStateType, BaseThunk, InferActionsType} from "./store";
+import {ThunkDispatch} from "redux-thunk";
 
 const SET_SORTING_METHOD = 'showing/SET_SORTING_METHOD'
 const SET_CATEGORY = 'showing/SET_CATEGORY'
@@ -57,5 +57,6 @@ export default showingReducer
 type initialStateType = typeof initialState
 type Actions = InferActionsType<typeof actions>
 type Thunk = BaseThunk<Actions, void>
-type Category = keyof typeof categories
-type SortingMethods = keyof typeof sortingMethods
+export type Category = keyof typeof categories
+export type SortingMethods = keyof typeof sortingMethods
+export type AppDispatch = ThunkDispatch<AppStateType, any, Actions>
