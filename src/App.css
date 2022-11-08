@@ -1,6 +1,6 @@
 .AppContainer {
-  margin: auto;
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
 }

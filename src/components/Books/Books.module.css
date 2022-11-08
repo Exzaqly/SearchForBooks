@@ -59,11 +59,13 @@
     text-align: center;
     margin: 30px auto 30px auto;
 }
+
 .loadButton:hover {
     color: blue;
     border: 2px solid blue;
 }
-.container{
+
+.container {
     display: grid;
 }
 

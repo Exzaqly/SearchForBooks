@@ -3,24 +3,25 @@
 
 }
 
-.form{
+.form {
     display: grid;
     align-items: center;
     justify-content: center;
     grid-template-areas: 'i b'
 }
 
-.form input{
+.form input {
     width: 500px;
     height: 30px;
     font-size: 20px;
     border: none;
 }
+
 .form input:focus {
     outline: none;
 }
 
-.form button{
+.form button {
     padding: 0;
     width: 32px;
     height: 32px;
@@ -34,9 +35,8 @@
     height: 32px;
 }
 
-
 @media (max-width: 660px) {
-    .form input{
+    .form input {
         width: 260px;
         height: 30px;
         font-size: 20px;

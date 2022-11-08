@@ -12,9 +12,9 @@ const App: FC = () => {
         <div className='AppContainer'>
             <Header/>
             <Routes>
-                    <Route path={'/books'} element={<Books/>}/>
-                    <Route path={'/books/:id'} element={<BookPage/>}/>
-                    <Route path={'*'} element={<Plug/>}/>
+                <Route path={'/books'} element={<Books/>}/>
+                <Route path={'/books/:id'} element={<BookPage/>}/>
+                <Route path={'*'} element={<Plug/>}/>
             </Routes>
         </div>
     )

@@ -16,14 +16,14 @@ export const Search: FC = () => {
             navigate('/books')
         }
     }
-    return(
-      <div className={styles.formContainer}>
-              <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                  <input {...register('searchTerm')} placeholder={'Search...'}/>
-                  <button type='submit'><img className={styles.buttonImg} src={search} alt=""/></button>
-              </form>
-      </div>
-  )
+    return (
+        <div className={styles.formContainer}>
+            <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
+                <input {...register('searchTerm')} placeholder={'Search...'}/>
+                <button type='submit'><img className={styles.buttonImg} src={search} alt=""/></button>
+            </form>
+        </div>
+    )
 }
 
 type FormData = {

@@ -8,7 +8,7 @@ const APIkey = 'AIzaSyCqwB0oEBasGvlKnzNY5f9AEjbmyEg4Rb4'
 
 export const booksAPI = {
     getBooks: (searchTerm: string, category: string, page: number, sorting: string) => {
-        if(category === 'all'){
+        if (category === 'all') {
             return (
                 instance.get<GetBooksResponse>(`?q=${searchTerm}&startIndex=${page}&orderBy=${sorting}&maxResults=30&key=${APIkey}`)
                     .then(response => response.data)

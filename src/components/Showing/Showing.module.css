@@ -10,16 +10,19 @@
     justify-self: center;
 
 }
-.form  label{
+
+.form label {
     font-size: 20px;
     color: white;
 }
-.form  select{
+
+.form select {
     font-size: 20px;
     width: 150px;
     color: gray;
 }
-.form  select:focus {
+
+.form select:focus {
     outline: none;
 }
 

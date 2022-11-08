@@ -15,8 +15,8 @@ import styles from './Showing.module.css'
 export const Showing: FC = () => {
     return (
         <div className={styles.showingContainer}>
-            <Categories />
-            <Sorting />
+            <Categories/>
+            <Sorting/>
         </div>
     )
 }
@@ -28,7 +28,7 @@ const Sorting: FC = () => {
         dispatch(setSortingMethod(data.sorting))
     }
     return (
-        <form className={styles.form}  onChange={handleSubmit(onSubmit)}>
+        <form className={styles.form} onChange={handleSubmit(onSubmit)}>
             <label>Sorting by: </label>
             <select {...register('sorting')}>
                 <option value={sortingMethods.relevance}>Relevance</option>

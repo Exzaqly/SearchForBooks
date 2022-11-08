@@ -22,7 +22,6 @@ let initialState = {
     loadMore: false
 }
 
-
 const booksReducer = (state = initialState, action: Actions): initialStateType => {
     switch (action.type) {
         case BOOKS_RECEIVED: {
@@ -123,7 +122,6 @@ export const getBook = (id: string): Thunk => async (dispatch, getState) => {
     dispatch(actions.bookReceived(data))
     dispatch(actions.toggleIsFetching(false))
 }
-
 
 export default booksReducer
 
