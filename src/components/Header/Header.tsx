@@ -1,13 +1,13 @@
 import {FC} from "react";
 import {Search} from "../Search/Search";
 import {Showing} from "../Showing/Showing";
-import {Link} from "react-router-dom";
+import styles from './Header.module.css'
 
 export const Header: FC = () => {
   return(
-      <div>
+      <div className={styles.headerContainer}>
             <h1>Search For Books</h1>
-              <Search />
+            <Search />
             <Showing />
       </div>
   )

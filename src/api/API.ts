@@ -18,11 +18,15 @@ export const booksAPI = {
             instance.get<GetBooksResponse>(`?q=${searchTerm}+subject:${category}&startIndex=${page}&orderBy=${sorting}&maxResults=30&key=${APIkey}`)
                 .then(response => response.data)
         )
-    }
+
+    },
+    getBook: (id: string) => instance.get<BookType>(`${id}?key=${APIkey}`)
+        .then(response => response.data)
 }
 
 type GetBooksResponse = {
     items: BookType[]
     totalItems: number
 }
+
 

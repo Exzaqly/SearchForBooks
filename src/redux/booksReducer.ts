@@ -3,6 +3,7 @@ import {booksAPI} from "../api/API";
 import {ThunkDispatch} from "redux-thunk";
 
 const BOOKS_RECEIVED = 'books/BOOKS_RECEIVED'
+const BOOK_RECEIVED = 'books/BOOK_RECEIVED'
 const SET_TOTAL_RESULTS = 'books/SET_TOTAL_RESULTS'
 const SET_TOTAL_PAGES = 'books/SET_TOTAL_PAGES'
 const SET_SEARCH_TERM = 'books/SET_SEARCH_TERM'
@@ -12,6 +13,7 @@ const TOGGLE_IS_FETCHING = 'books/TOGGLE_IS_FETCHING'
 const TOGGLE_LOAD_MORE = 'books/TOGGLE_LOAD_MORE'
 let initialState = {
     booksList: [] as BookType[],
+    book: null as BookType | null,
     totalResults: null as number | null,
     totalPages: null as number | null,
     currentPage: 0,
@@ -59,16 +61,22 @@ const booksReducer = (state = initialState, action: Actions): initialStateType =
                 booksList: []
             }
         }
-        case TOGGLE_IS_FETCHING:{
+        case TOGGLE_IS_FETCHING: {
             return {
                 ...state,
                 isFetching: action.payload.isFetching
             }
         }
-        case TOGGLE_LOAD_MORE:{
+        case TOGGLE_LOAD_MORE: {
             return {
                 ...state,
                 loadMore: action.payload.loadMore
+            }
+        }
+        case BOOK_RECEIVED: {
+            return {
+                ...state,
+                book: action.payload
             }
         }
         default:
@@ -84,7 +92,8 @@ const actions = {
     setCurrentPage: (currentPage: number) => ({type: SET_CURRENT_PAGE, payload: {currentPage}} as const),
     clearBooksList: () => ({type: CLEAR_BOOKS_LIST} as const),
     toggleIsFetching: (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const),
-    toggleLoadMore: (loadMore: boolean) => ({type: TOGGLE_LOAD_MORE, payload: {loadMore}} as const)
+    toggleLoadMore: (loadMore: boolean) => ({type: TOGGLE_LOAD_MORE, payload: {loadMore}} as const),
+    bookReceived: (book: BookType) => ({type: BOOK_RECEIVED, payload: book} as const)
 }
 
 const _getBooks = (): Thunk => async (dispatch, getState) => {
@@ -108,6 +117,12 @@ export const addBooksPage = (): Thunk => async (dispatch, getState) => {
     await dispatch(_getBooks())
     dispatch(actions.toggleLoadMore(false))
 }
+export const getBook = (id: string): Thunk => async (dispatch, getState) => {
+    dispatch(actions.toggleIsFetching(true))
+    const data = await booksAPI.getBook(id)
+    dispatch(actions.bookReceived(data))
+    dispatch(actions.toggleIsFetching(false))
+}
 
 
 export default booksReducer
@@ -128,5 +143,5 @@ type VolumeInfo = {
         thumbnail: string
     }
     description: string
-    infoLink: string
+    previewLink: string
 }

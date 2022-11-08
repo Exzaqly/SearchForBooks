@@ -1,0 +1,35 @@
+.formContainer {
+    text-align: center;
+
+}
+
+.form{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-areas: 'i b'
+}
+
+.form input{
+    width: 500px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+}
+.form input:focus {
+    outline: none;
+}
+
+.form button{
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    font-size: 20px;
+    border: none;
+    background-color: white;
+}
+
+.buttonImg {
+    width: 32px;
+    height: 32px;
+}

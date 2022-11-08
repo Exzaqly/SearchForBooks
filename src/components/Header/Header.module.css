@@ -1,0 +1,13 @@
+.headerContainer {
+    margin-bottom: 100px;
+    background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://postermarket.ru/upload/iblock/db0/db0552d1e4efaee5e93af8027378165c.jpg') no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    padding-bottom: 40px;
+}
+
+.headerContainer  h1 {
+    text-align: center;
+    font-size: 50px;
+    color: white;
+}

@@ -4,15 +4,17 @@ import {
     categories,
     Category,
     setCategory,
-    setSortingMethod, sortingMethods,
+    setSortingMethod,
+    sortingMethods,
     SortingMethods
 } from "../../redux/showingReducer";
 import {SubmitHandler, useForm} from "react-hook-form";
 import {useDispatch} from "react-redux";
+import styles from './Showing.module.css'
 
 export const Showing: FC = () => {
     return (
-        <div>
+        <div className={styles.showingContainer}>
             <Categories />
             <Sorting />
         </div>
@@ -26,7 +28,7 @@ const Sorting: FC = () => {
         dispatch(setSortingMethod(data.sorting))
     }
     return (
-        <form  onChange={handleSubmit(onSubmit)}>
+        <form className={styles.form}  onChange={handleSubmit(onSubmit)}>
             <label>Sorting by: </label>
             <select {...register('sorting')}>
                 <option value={sortingMethods.relevance}>Relevance</option>
@@ -43,7 +45,7 @@ const Categories: FC = () => {
         dispatch(setCategory(data.category))
     }
     return (
-        <form  onChange={handleSubmit(onSubmit)}>
+        <form className={styles.form} onChange={handleSubmit(onSubmit)}>
             <label>Categories: </label>
             <select {...register('category')}>
                 <option value={categories.all}>All</option>

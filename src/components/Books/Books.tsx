@@ -4,7 +4,7 @@ import {booksListSelector, isFetchingSelector, loadMoreSelector, totalResultsSel
 import {Book} from "./Book";
 import {Preloader} from "../common/Preloader";
 import {addBooksPage, AppDispatch} from "../../redux/booksReducer";
-import {NavLink} from "react-router-dom";
+import {Link, NavLink} from "react-router-dom";
 
 export const Books: FC = () => {
     const totalResults = useSelector(totalResultsSelector)
@@ -21,15 +21,14 @@ export const Books: FC = () => {
             totalResults ?
                 <div>
                     <h2>Found {totalResults} results</h2>
-                    {books.map(b => <NavLink to={`/book/${b.id}`}>
+                    {books.map(b => <Link key={b.id} to={`/books/${b.id}` }>
                         <Book
-                            key={b.id}
                             title={b.volumeInfo.title}
                             authors={b.volumeInfo.authors}
                             categories={b.volumeInfo.categories}
                             image={b.volumeInfo.imageLinks?.thumbnail}
                         />
-                    </NavLink>)}
+                    </Link>)}
                     {isLoading ? <Preloader/> : <button onClick={loadMore}>load More</button>}
                 </div> : <div>search!</div>
 
