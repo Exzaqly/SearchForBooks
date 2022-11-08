@@ -33,3 +33,13 @@
     width: 32px;
     height: 32px;
 }
+
+
+@media (max-width: 660px) {
+    .form input{
+        width: 260px;
+        height: 30px;
+        font-size: 20px;
+        border: none;
+    }
+}

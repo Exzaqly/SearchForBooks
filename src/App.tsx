@@ -4,6 +4,7 @@ import {Header} from "./components/Header/Header";
 import {Books} from "./components/Books/Books";
 import {Route, Routes} from "react-router-dom";
 import {BookPage} from "./components/Books/BookPage";
+import {Plug} from "./components/common/Plug";
 
 const App: FC = () => {
 
@@ -13,7 +14,7 @@ const App: FC = () => {
             <Routes>
                     <Route path={'/books'} element={<Books/>}/>
                     <Route path={'/books/:id'} element={<BookPage/>}/>
-                    <Route path={'*'} element={<div> Search! </div>}/>
+                    <Route path={'*'} element={<Plug/>}/>
             </Routes>
         </div>
     )

@@ -1,0 +1,94 @@
+.booksContainer {
+    display: grid;
+    grid-template-columns: repeat(5, 280px);
+    grid-gap: 30px 20px;
+    justify-items: center;
+    align-items: center;
+    justify-content: center;
+    grid-auto-rows: minmax(360px, 500px);
+}
+
+.booksContainer a {
+    text-decoration: none;
+}
+
+.bookContainer {
+    width: 240px;
+    height: 480px;
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    color: gray;
+    padding: 10px;
+    background-color: #f3f2f1;
+    text-align: center;
+}
+
+.bookContainer img {
+    width: 128px;
+    margin-bottom: 5px;
+}
+
+.bookContainer h3 {
+    font-size: 18px;
+    color: black;
+    margin: 0;
+}
+
+.bookContainer span {
+    color: black;
+    text-decoration: underline;
+    margin: 0;
+}
+
+.bookContainer p {
+    margin: 0;
+}
+
+.totalResults {
+    width: 300px;
+    text-align: center;
+    margin: 10px auto 30px auto;
+}
+
+.loadButton {
+    height: 40px;
+    width: 200px;
+    background-color: #fff;
+    font-size: 20px;
+    text-align: center;
+    margin: 30px auto 30px auto;
+}
+.loadButton:hover {
+    color: blue;
+    border: 2px solid blue;
+}
+.container{
+    display: grid;
+}
+
+@media (max-width: 1600px) {
+    .booksContainer {
+        grid-template-columns: repeat(4, 280px);
+    }
+}
+
+@media (max-width: 1200px) {
+    .booksContainer {
+        grid-template-columns: repeat(3, 280px);
+    }
+}
+
+@media (max-width: 800px) {
+    .booksContainer {
+        grid-template-columns: repeat(2, 280px);
+    }
+}
+
+@media (max-width: 660px) {
+    .booksContainer {
+        grid-template-columns: repeat(1, 280px);
+    }
+}
+
+

@@ -5,3 +5,5 @@ export const totalResultsSelector = (state: AppStateType) => state.books.totalRe
 export const isFetchingSelector = (state: AppStateType) => state.books.isFetching
 export const loadMoreSelector = (state: AppStateType) => state.books.loadMore
 export const bookSelector = (state: AppStateType) => state.books.book
+export const currentPageSelector = (state: AppStateType) => state.books.currentPage
+export const totalPagesSelector = (state: AppStateType) => state.books.totalPages

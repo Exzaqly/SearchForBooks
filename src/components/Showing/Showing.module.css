@@ -22,3 +22,10 @@
 .form  select:focus {
     outline: none;
 }
+
+@media (max-width: 660px) {
+    .showingContainer {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}

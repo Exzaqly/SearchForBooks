@@ -1,0 +1,130 @@
+.bookPage {
+    display: flex;
+}
+
+.bookPage span {
+    font-size: 15px;
+    font-weight: 300;
+    margin-bottom: 35px;
+}
+
+.bookPage h3 {
+    font-weight: 400;
+    margin-bottom: 15px;
+}
+
+.bookPage p {
+    color: #878787;
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 30px;
+    text-decoration: underline;
+}
+
+.bookPage button {
+    background-color: #fff;
+    height: 40px;
+    border: 1px solid #e1e1e1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 10px;
+    text-decoration: none;
+    color: #000;
+    transition: .2s;
+}
+
+.description {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #e1e1e1;
+}
+
+.bookPageContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.bookCover {
+    flex-basis: 45%;
+    background-color: #f3f2f1;
+    display: flex;
+    justify-content: center;
+    padding: 50px 0;
+}
+
+.bookCover img {
+    width: 240px;
+    height: 360px;
+}
+
+.descriptionContainer {
+    flex-basis: 55%;
+    padding: 50px;
+}
+
+.header {
+    height: 50px;
+    border-bottom: 1px solid #e1e1e1;
+    display: flex;
+    align-items: center;
+}
+
+.header button {
+    text-decoration: none;
+    color: #000;
+    height: 50px;
+    font-size: 23px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    padding: 0 10px 0 60px;
+    border-bottom: none;
+    border-bottom: none;
+    border-top: none;
+    border-right: 1px solid #e1e1e1;
+    background-color: #fff;
+    position: relative;
+    transition: .2s;
+}
+
+.header button:before {
+    color: #502542;
+    margin-left: -1.5rem;
+    margin-right: 1rem;
+    content: "❮";
+}
+
+.header button:hover {
+    background-color: #e1e1e1;
+}
+
+.bookPage button:hover {
+    background-color: #e1e1e1;
+}
+
+@media (max-width: 800px) {
+    .bookPage {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 460px) {
+    .description {
+        font-size: 14px;
+        padding: 5px;
+        margin-bottom: 10px;
+        border: 1px solid #e1e1e1;
+    }
+
+    .descriptionContainer {
+        flex-basis: 55%;
+        padding: 25px;
+    }
+
+    .bookCover img {
+        width: 180px;
+        height: 270px;
+    }
+}
