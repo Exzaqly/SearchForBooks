@@ -9,6 +9,7 @@ const SET_SEARCH_TERM = 'books/SET_SEARCH_TERM'
 const SET_CURRENT_PAGE = 'books/SET_CURRENT_PAGE'
 const CLEAR_BOOKS_LIST = 'books/CLEAR_BOOKS_LIST'
 const TOGGLE_IS_FETCHING = 'books/TOGGLE_IS_FETCHING'
+const TOGGLE_LOAD_MORE = 'books/TOGGLE_LOAD_MORE'
 let initialState = {
     booksList: [] as BookType[],
     totalResults: null as number | null,
@@ -16,6 +17,7 @@ let initialState = {
     currentPage: 0,
     searchTerm: '',
     isFetching: false,
+    loadMore: false
 }
 
 
@@ -63,6 +65,12 @@ const booksReducer = (state = initialState, action: Actions): initialStateType =
                 isFetching: action.payload.isFetching
             }
         }
+        case TOGGLE_LOAD_MORE:{
+            return {
+                ...state,
+                loadMore: action.payload.loadMore
+            }
+        }
         default:
             return state
     }
@@ -75,7 +83,8 @@ const actions = {
     setSearchTerm: (searchTerm: string) => ({type: SET_SEARCH_TERM, payload: {searchTerm}} as const),
     setCurrentPage: (currentPage: number) => ({type: SET_CURRENT_PAGE, payload: {currentPage}} as const),
     clearBooksList: () => ({type: CLEAR_BOOKS_LIST} as const),
-    toggleIsFetching: (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const)
+    toggleIsFetching: (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, payload: {isFetching}} as const),
+    toggleLoadMore: (loadMore: boolean) => ({type: TOGGLE_LOAD_MORE, payload: {loadMore}} as const)
 }
 
 const _getBooks = (): Thunk => async (dispatch, getState) => {
@@ -94,8 +103,10 @@ export const findBooks = (searchTerm: string): Thunk => async (dispatch, getStat
     dispatch(actions.toggleIsFetching(false))
 }
 export const addBooksPage = (): Thunk => async (dispatch, getState) => {
+    dispatch(actions.toggleLoadMore(true))
     dispatch(actions.setCurrentPage(getState().books.currentPage + 1))
     await dispatch(_getBooks())
+    dispatch(actions.toggleLoadMore(false))
 }
 
 
