@@ -1,7 +1,7 @@
 import React, {FC} from 'react';
 import './App.css';
 import {Header} from "./components/Header/Header";
-import {Books} from "./components/Books/Books";
+import {BooksPage} from "./components/Books/BooksPage";
 import {Route, Routes} from "react-router-dom";
 import {BookPage} from "./components/Books/BookPage";
 import {Plug} from "./components/common/Plug";
@@ -12,7 +12,7 @@ const App: FC = () => {
         <div className='AppContainer'>
             <Header/>
             <Routes>
-                <Route path={'/books'} element={<Books/>}/>
+                <Route path={'/books'} element={<BooksPage/>}/>
                 <Route path={'/books/:id'} element={<BookPage/>}/>
                 <Route path={'*'} element={<Plug/>}/>
             </Routes>

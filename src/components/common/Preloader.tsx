@@ -1,6 +1,6 @@
 import {FC} from "react";
 import preloaderSVG from '../../assets/preloader.svg'
-import styles from './common.module.css'
+import styles from './Preloader.module.css'
 
 export const Preloader: FC = () => {
     return (

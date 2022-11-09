@@ -29,6 +29,10 @@
     border: none;
     background-color: white;
 }
+.form button:hover {
+    cursor: pointer;
+}
+
 
 .buttonImg {
     width: 32px;

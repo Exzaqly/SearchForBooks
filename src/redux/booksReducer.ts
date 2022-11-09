@@ -96,11 +96,15 @@ const actions = {
 }
 
 const _getBooks = (): Thunk => async (dispatch, getState) => {
-
+try {
     const data = await booksAPI.getBooks(getState().books.searchTerm, getState().showing.category, getState().books.currentPage, getState().showing.sorting)
     dispatch(actions.booksReceived(data.items))
     dispatch(actions.setTotalResults(data.totalItems))
     dispatch(actions.setTotalPages(Math.ceil(data.totalItems / 30)))
+}catch (e) {
+    alert('Failed to load books')
+}
+
 }
 export const findBooks = (searchTerm: string): Thunk => async (dispatch, getState) => {
     dispatch(actions.toggleIsFetching(true))
@@ -118,9 +122,14 @@ export const addBooksPage = (): Thunk => async (dispatch, getState) => {
 }
 export const getBook = (id: string): Thunk => async (dispatch, getState) => {
     dispatch(actions.toggleIsFetching(true))
-    const data = await booksAPI.getBook(id)
-    dispatch(actions.bookReceived(data))
-    dispatch(actions.toggleIsFetching(false))
+    try {
+        const data = await booksAPI.getBook(id)
+        dispatch(actions.bookReceived(data))
+        dispatch(actions.toggleIsFetching(false))
+    }
+    catch (e){
+        alert('Failed to load book')
+    }
 }
 
 export default booksReducer

@@ -1,4 +1,4 @@
-import styles from './common.module.css'
+import styles from './Plug.module.css'
 
 export const Plug = () => (
     <div className={styles.plug}>

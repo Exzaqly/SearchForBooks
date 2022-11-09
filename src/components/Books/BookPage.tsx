@@ -27,7 +27,7 @@ export const BookPage: FC = () => {
             <Preloader/> :
             book && <div className={styles.bookPageContainer}>
                 <div className={styles.header}>
-                    <button onClick={goBack}>go Back</button>
+                    <button onClick={goBack}>Back</button>
                 </div>
                 <div className={styles.bookPage}>
                     <div className={styles.bookCover}>

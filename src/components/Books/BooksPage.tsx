@@ -8,14 +8,14 @@ import {
     totalPagesSelector,
     totalResultsSelector
 } from "../../redux/selectors";
-import {Book} from "./Book";
 import {Preloader} from "../common/Preloader";
 import {addBooksPage, AppDispatch} from "../../redux/booksReducer";
 import {Link} from "react-router-dom";
 import {Plug} from "../common/Plug";
-import styles from './Books.module.css'
+import styles from './BooksPage.module.css'
+import bookCover from "../../assets/bookCover.jpg";
 
-export const Books: FC = () => {
+export const BooksPage: FC = () => {
     const totalResults = useSelector(totalResultsSelector)
     const books = useSelector(booksListSelector)
     const isFetching = useSelector(isFetchingSelector)
@@ -47,4 +47,22 @@ export const Books: FC = () => {
                 </div> : <Plug/>
 
     )
+}
+
+const Book: FC<Props> = ({title, categories, authors, image}) => {
+    return (
+        <div className={styles.bookContainer}>
+            <img src={image ? image : bookCover} alt=""/>
+            {categories && <span>{categories[0]}</span>}
+            <h3>{title}</h3>
+            {authors && <p>{[...authors]}</p>}
+        </div>
+    )
+}
+
+type Props = {
+    title: string
+    authors: string[]
+    categories: string[]
+    image: string
 }
