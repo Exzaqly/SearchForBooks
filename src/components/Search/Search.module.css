@@ -29,6 +29,7 @@
     border: none;
     background-color: white;
 }
+
 .form button:hover {
     cursor: pointer;
 }
